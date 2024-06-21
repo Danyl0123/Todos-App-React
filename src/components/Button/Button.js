@@ -1,15 +1,14 @@
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
-const ButtonSubmit = ({ value, handleClick }) => {
-  //   return <button onClick={handleClick}>Add todo</button>;
+const ButtonSubmit = ({ editId, value, handleClick }) => {
   return (
     <Button
       disabled={!value}
       onClick={handleClick}
       variant="contained"
-      endIcon={<AddIcon />}
+      endIcon={!editId && <AddIcon />}
     >
-      Add Todo
+      {editId ? "Edit todo" : "Add todo"}
     </Button>
   );
 };

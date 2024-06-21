@@ -1,12 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+NZ:wght@100..400&display=swap");
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
 .header {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 600;
   padding: 30px 0 30px 0;
-  background-color: rgb(215, 201, 183);
+  background-color: rgb(182, 165, 143);
+}
+.header__logo {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-family: "Playwrite NZ", cursive;
 }
 .header__content {
   display: flex;
@@ -17,12 +24,12 @@
 }
 .todo__item {
   border-radius: 8px;
-  background-color: rgb(220, 212, 212);
+  background-color: rgb(206, 187, 187);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 15px 10px 5px;
+  padding: 10px 15px 10px 15px;
   margin-bottom: 10px;
 }
 .todo__text {
@@ -38,4 +45,23 @@
   display: flex;
   gap: 10px;
   font-size: 18px;
+}
+.button__add {
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  font-family: "Playwrite NZ", cursive;
+}
+.button__add:hover {
+  background-color: rgb(214, 214, 214);
+  transition-duration: 0.4s;
+}
+.item__name {
+  font-weight: bold;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+}
+.item__descroption {
+  font-size: 14px;
+  font-family: "Playfair Display", serif;
 }

@@ -16,10 +16,10 @@ const Item = ({ className, isDone, editItem, item, handleDelete }) => {
           checked={item.isDone}
         />
         <div className="todo__text">
-          <span>{item.name}</span>
-          <p>
-            {item.description.length > 140
-              ? item.description.slice(0, 140) + "..."
+          <span className="item__name">{item.name}</span>
+          <p className="item__description">
+            {item.description.length > 80
+              ? item.description.slice(0, 80) + "..."
               : item.description}
           </p>
         </div>
@@ -33,7 +33,7 @@ const Item = ({ className, isDone, editItem, item, handleDelete }) => {
         />
         <FaPencilAlt
           onClick={() => {
-            editItem(item.name, item.id);
+            editItem(item.name, item.description, item.id);
           }}
           className="icon"
         />

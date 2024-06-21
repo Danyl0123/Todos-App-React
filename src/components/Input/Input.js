@@ -1,12 +1,12 @@
 import TextField from "@mui/material/TextField";
-const Input = ({ value, handleChange }) => {
-  //   return <input value={value} onChange={handleChange} />;
+const Input = ({ editId, value, handleChange }) => {
   return (
     <TextField
+      className="modal__input"
       id="outlined-basic"
       value={value}
       onChange={handleChange}
-      label="Add todo"
+      label={editId ? "changed todo`s title" : "Add todo`s title"}
       variant="outlined"
     />
   );

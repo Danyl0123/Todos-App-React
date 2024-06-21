@@ -1,0 +1,18 @@
+.modal__title {
+  font-family: "Playwrite NZ", cursive;
+}
+
+.modal__textarea {
+  font-size: 14px;
+  font-family: "Playfair Display", serif;
+}
+.modal__input {
+  width: 100%;
+  margin-bottom: 20px;
+  font-family: "Playwrite NZ", cursive;
+}
+.modal__description {
+  padding-top: 20px;
+  font-size: 16px;
+  font-family: "Playwrite NZ", cursive;
+}
