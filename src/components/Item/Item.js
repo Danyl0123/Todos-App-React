@@ -1,9 +1,22 @@
 import { FaBitbucket } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import Checkbox from "@mui/material/Checkbox";
+import ReadTodoWindow from "../ReadTodoWindow/ReadTodoWindow";
+import { useState } from "react";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
 const Item = ({ className, isDone, editItem, item, handleDelete }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <li className={item.isDone ? className + " done" : className}>
       <div className="todo__description">
@@ -15,7 +28,7 @@ const Item = ({ className, isDone, editItem, item, handleDelete }) => {
           }}
           checked={item.isDone}
         />
-        <div className="todo__text">
+        <div className="todo__text" onClick={handleOpenModal}>
           <span className="item__name">{item.name}</span>
           <p className="item__description">
             {item.description.length > 80
@@ -23,6 +36,12 @@ const Item = ({ className, isDone, editItem, item, handleDelete }) => {
               : item.description}
           </p>
         </div>
+        <ReadTodoWindow
+          show={showModal}
+          handleClose={handleCloseModal}
+          name={item.name}
+          description={item.description}
+        />
       </div>
       <div className="icon-group">
         <FaBitbucket
@@ -41,4 +60,5 @@ const Item = ({ className, isDone, editItem, item, handleDelete }) => {
     </li>
   );
 };
+
 export default Item;

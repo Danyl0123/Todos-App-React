@@ -58,3 +58,6 @@ p {
   text-decoration: line-through;
   font-style: italic;
 }
+.todo__text {
+  cursor: pointer;
+}
