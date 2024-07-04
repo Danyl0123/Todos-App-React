@@ -23,6 +23,7 @@
   padding: 20px 15px 20px 15px;
 }
 .todo__item {
+  border: 1px solid black;
   border-radius: 8px;
   background-color: rgb(206, 187, 187);
   display: flex;
@@ -31,6 +32,11 @@
   justify-content: space-between;
   padding: 10px 15px 10px 15px;
   margin-bottom: 10px;
+}
+.done {
+  text-decoration: line-through;
+  font-style: italic;
+  background-color: rgb(120, 188, 120);
 }
 .todo__text {
   padding-left: 10px;
@@ -64,4 +70,8 @@
 .item__descroption {
   font-size: 14px;
   font-family: "Playfair Display", serif;
+}
+.overdue {
+  border-color: red;
+  background-color: rgb(234, 150, 150);
 }

@@ -3,6 +3,10 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Input from "../Input/Input";
 import ButtonSubmit from "../Button/Button";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import "./ModalWindow.css";
 
 function ModalWindow({
@@ -14,6 +18,8 @@ function ModalWindow({
   handleClick,
   handleClose,
   show,
+  DataValue,
+  installDataValue,
 }) {
   return (
     <>
@@ -40,6 +46,15 @@ function ModalWindow({
                 rows={3}
                 className="modal__textarea"
               />
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DemoContainer components={["DateTimePicker"]}>
+                  <DateTimePicker
+                    label="Basic date time picker"
+                    value={DataValue}
+                    onChange={(newValue) => installDataValue(newValue)}
+                  />
+                </DemoContainer>
+              </LocalizationProvider>
             </Form.Group>
           </Form>
         </Modal.Body>

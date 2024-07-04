@@ -2,12 +2,24 @@ import { FaBitbucket } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import Checkbox from "@mui/material/Checkbox";
 import ReadTodoWindow from "../ReadTodoWindow/ReadTodoWindow";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const Item = ({ className, isDone, editItem, item, handleDelete }) => {
   const [showModal, setShowModal] = useState(false);
+  const [isOverdue, setIsOverdue] = useState(false);
+
+  useEffect(() => {
+    const currentTime = new Date();
+    const taskTime = new Date(item.deadline);
+
+    if (taskTime < currentTime && !item.isDone) {
+      setIsOverdue(true);
+    } else {
+      setIsOverdue(false);
+    }
+  }, [item]);
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -18,7 +30,11 @@ const Item = ({ className, isDone, editItem, item, handleDelete }) => {
   };
 
   return (
-    <li className={item.isDone ? className + " done" : className}>
+    <li
+      className={`${className} ${item.isDone ? "done" : ""} ${
+        isOverdue ? "overdue" : ""
+      }`}
+    >
       <div className="todo__description">
         <Checkbox
           className="checkbox"
@@ -41,6 +57,7 @@ const Item = ({ className, isDone, editItem, item, handleDelete }) => {
           handleClose={handleCloseModal}
           name={item.name}
           description={item.description}
+          dataValue={item.deadline}
         />
       </div>
       <div className="icon-group">

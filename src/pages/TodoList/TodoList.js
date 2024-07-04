@@ -12,6 +12,8 @@ const TodoList = () => {
   const [descriptionValue, setDescriptionValue] = useState("");
   const [editId, setEditId] = useState(null);
   const [show, setShow] = useState(false);
+  const [dataValue, setDataValue] = useState(null);
+  const installDataValue = (value) => setDataValue(value);
   const handleClose = () => {
     setShow(false);
     if (editId) {
@@ -50,6 +52,7 @@ const TodoList = () => {
           isDone: false,
           name: value,
           description: descriptionValue,
+          deadline: new Date(dataValue),
         }),
       });
       setIsLoaded(false);
@@ -82,6 +85,7 @@ const TodoList = () => {
           isDone: false,
           name: value,
           description: descriptionValue,
+          deadline: new Date(dataValue),
         }),
       });
       setIsLoaded(false);
@@ -142,6 +146,8 @@ const TodoList = () => {
             descriptionValue={descriptionValue}
             handleClick={editId ? editTodo : addTodo}
             handleChangeDesciption={handleChangeDesciption}
+            dataValue={dataValue}
+            installDataValue={installDataValue}
           />
         </div>
       </div>
