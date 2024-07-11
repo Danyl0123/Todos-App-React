@@ -4,9 +4,10 @@ import { API_URL } from "../../assets/constants";
 import Item from "../../components/Item/Item";
 import { GrNotes } from "react-icons/gr";
 import ModalWindow from "../../components/ModalWindow/ModalWindow";
+import { connect } from "react-redux";
+import { setTodo } from "../../modules/actions/todos";
 
-const TodoList = () => {
-  const [todos, setTodos] = useState([]);
+const TodoList = ({ setTodo, todos }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [value, setValue] = useState("");
   const [descriptionValue, setDescriptionValue] = useState("");
@@ -34,7 +35,7 @@ const TodoList = () => {
     try {
       const response = await fetch(`${API_URL}/todo`);
       const data = await response.json();
-      setTodos(data);
+      setTodo(data);
     } catch (error) {
       console.error(error);
     }
@@ -170,4 +171,9 @@ const TodoList = () => {
     </>
   );
 };
-export default TodoList;
+
+const mapStateToProps = (state) => ({
+  todos: state.todos.data,
+});
+
+export default connect(mapStateToProps, { setTodo })(TodoList);

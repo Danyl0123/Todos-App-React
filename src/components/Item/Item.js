@@ -11,7 +11,8 @@ const Item = ({ className, isDone, editItem, item, handleDelete }) => {
   const [isOverdue, setIsOverdue] = useState(false);
   useEffect(() => {
     const currentTime = new Date();
-    const taskTime = !item.deadline ? null : new Date(item.deadline);
+    console.log(item);
+    const taskTime = !item.deadline ? item.deadline : new Date(item.deadline);
     if (taskTime && taskTime < currentTime && !item.isDone) {
       setIsOverdue(true);
     } else {
