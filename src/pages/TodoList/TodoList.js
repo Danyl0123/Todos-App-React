@@ -12,7 +12,7 @@ const TodoList = () => {
   const [descriptionValue, setDescriptionValue] = useState("");
   const [editId, setEditId] = useState(null);
   const [show, setShow] = useState(false);
-  const [dataValue, setDataValue] = useState(null);
+  const [dataValue, setDataValue] = useState(undefined);
   const installDataValue = (value) => setDataValue(value);
   const handleClose = () => {
     setShow(false);

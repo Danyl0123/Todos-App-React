@@ -9,12 +9,10 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 const Item = ({ className, isDone, editItem, item, handleDelete }) => {
   const [showModal, setShowModal] = useState(false);
   const [isOverdue, setIsOverdue] = useState(false);
-
   useEffect(() => {
     const currentTime = new Date();
-    const taskTime = new Date(item.deadline);
-
-    if (taskTime < currentTime && !item.isDone) {
+    const taskTime = !item.deadline ? null : new Date(item.deadline);
+    if (taskTime && taskTime < currentTime && !item.isDone) {
       setIsOverdue(true);
     } else {
       setIsOverdue(false);
